@@ -1,17 +1,16 @@
 schema_version: 1
 
 context:
-  name: servicex
-  version: "3.3.0"
+  version: "3.3.1"
   python_min: '3.9'
 
 package:
-  name: ${{ name|lower }}
+  name: "servicex"
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/servicex-${{ version }}.tar.gz
-  sha256: e70e46d23ac75ed82d1379b49474fa211ac0264ad50f076967a515b09fbc84aa
+  url: https://pypi.org/packages/source/s/servicex/servicex-${{ version }}.tar.gz
+  sha256: 7211165e15dabebc45a26e1991fd34d9c88618278a6e1aa6e0f4838c7c932892
 
 build:
   number: 0
@@ -55,11 +54,9 @@ tests:
       imports:
         - servicex
       pip_check: true
-      python_version: ${{ python_min }}.*
-  - requirements:
-      run:
-        - python ${{ python_min }}.*
-        - pip
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
     script:
       - servicex --help
 
